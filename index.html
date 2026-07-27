@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verification</title>
-  <meta name="description" content="Quick verification check to proceed safely.">
+  <title>Verificação de Segurança - Confirme que você não é um robô</title>
+  <meta name="description" content="Verificação de segurança rápida para prosseguir com o acesso seguro.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --card-border: #e2e8f0;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --success: #16a34a;
-      --captcha-bg: #f1f5f9;
-      --captcha-border: #cbd5e1;
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #ff5500;
+      --primary-hover: #e04a00;
+      --success: #22c55e;
+      --captcha-bg: #0f172a;
+      --captcha-border: #475569;
     }
 
     * {
@@ -38,6 +38,9 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      background-image: 
+        radial-gradient(at 20% 20%, rgba(255, 85, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(34, 197, 94, 0.1) 0px, transparent 50%);
     }
 
     .container {
@@ -47,20 +50,21 @@
       border: 1px solid var(--card-border);
       border-radius: 16px;
       padding: 32px 24px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
       text-align: center;
+      backdrop-filter: blur(10px);
     }
 
     .shield-icon {
       width: 64px;
       height: 64px;
-      background: rgba(37, 99, 235, 0.08);
+      background: rgba(255, 85, 0, 0.1);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px auto;
-      border: 1px solid rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(255, 85, 0, 0.2);
     }
 
     .shield-icon svg {
@@ -83,7 +87,7 @@
       line-height: 1.5;
     }
 
-    /* Checkbox Box Component */
+    /* Captcha Box Component */
     .captcha-box {
       background: var(--captcha-bg);
       border: 1px solid var(--captcha-border);
@@ -100,7 +104,7 @@
 
     .captcha-box:hover {
       border-color: var(--primary);
-      background: #e2e8f0;
+      background: #131d33;
     }
 
     .captcha-left {
@@ -117,7 +121,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
+      background: #1e293b;
       transition: all 0.2s ease;
       flex-shrink: 0;
     }
@@ -148,7 +152,7 @@
     .spinner {
       width: 20px;
       height: 20px;
-      border: 3px solid rgba(37, 99, 235, 0.2);
+      border: 3px solid rgba(255, 85, 0, 0.2);
       border-top-color: var(--primary);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
@@ -183,7 +187,7 @@
     .captcha-brand svg {
       width: 24px;
       height: 24px;
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     .captcha-brand span {
@@ -205,7 +209,7 @@
     .redirect-status {
       font-size: 0.88rem;
       color: var(--success);
-      font-weight: 600;
+      font-weight: 500;
       opacity: 0;
       transition: opacity 0.3s ease;
       display: flex;
@@ -220,7 +224,7 @@
     .progress-bar-container {
       width: 100%;
       height: 4px;
-      background: rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 2px;
       overflow: hidden;
       margin-top: 10px;
@@ -243,7 +247,7 @@
     .footer-info {
       margin-top: 24px;
       padding-top: 16px;
-      border-top: 1px solid #f1f5f9;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -291,10 +295,10 @@
       </svg>
     </div>
 
-    <h1>Verification</h1>
-    <p class="subtitle">Click the box below to verify and proceed.</p>
+    <h1>Verificação de Segurança</h1>
+    <p class="subtitle">Confirme que você é humano para prosseguir com segurança.</p>
 
-    <!-- Checkbox Widget -->
+    <!-- Captcha Checkbox Widget -->
     <div class="captcha-box" id="captchaBox" onclick="handleVerification()">
       <div class="captcha-left">
         <div class="spinner" id="spinner"></div>
@@ -303,10 +307,10 @@
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <span class="captcha-label" id="captchaLabel">Click to verify</span>
+        <span class="captcha-label" id="captchaLabel">Não sou um robô</span>
       </div>
       <div class="captcha-brand">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
           <path d="M7 11V7a5 5.0 0 0 1 10 0v4"></path>
         </svg>
@@ -317,25 +321,25 @@
     <!-- Status and Loader -->
     <div class="status-area">
       <div class="redirect-status" id="statusMessage">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#16a34a">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#22c55e">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
-        <span>Verified! Redirecting...</span>
+        <span>Verificação concluída! Redirecionando...</span>
       </div>
       <div class="progress-bar-container" id="progressBarContainer">
         <div class="progress-bar-fill" id="progressBarFill"></div>
       </div>
-      <a href="#" id="fallbackBtn" class="fallback-btn">Click here if you are not redirected</a>
+      <a href="#" id="fallbackBtn" class="fallback-btn">Clique aqui caso não seja redirecionado</a>
     </div>
 
     <div class="footer-info">
       <div class="footer-item">
         <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-        <span>256-bit SSL</span>
+        <span>SSL 256-bit</span>
       </div>
       <div class="footer-item">
         <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        <span>Secure Access</span>
+        <span>Proteção Anti-Bot</span>
       </div>
     </div>
   </div>
@@ -343,7 +347,7 @@
   <script>
     let isChecked = false;
     let isProcessing = false;
-    const TARGET_BASE_URL = 'https://bruninha-xi.vercel.app';
+    const TARGET_BASE_URL = 'https://bruninha-xi.vercel.app/';
 
     function getRedirectUrl() {
       // Preserves original query params (UTMs, etc.) if present
@@ -387,7 +391,7 @@
         isChecked = true;
         isProcessing = false;
 
-        document.getElementById('captchaLabel').innerText = 'Verified!';
+        document.getElementById('captchaLabel').innerText = 'Você é humano!';
 
         // Show status & progress bar
         statusMessage.classList.add('visible');
